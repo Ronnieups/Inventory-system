@@ -77,6 +77,7 @@ def add_supplier(request):
 
     return render(request, 'inventory/add_supplier.html', {'form': form})
 
+@login_required
 def manage_inventory(request):
     items = InventoryItem.objects.all()
 

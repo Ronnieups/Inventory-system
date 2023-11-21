@@ -2,12 +2,22 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from django.db import models
 
 from .models import InventoryItem
 from .forms import CategoryForm, SupplierForm, InventoryItemForm
+from .models import InventoryItem, Supplier, Sale
 
 def home(request):
-    return render(request, 'inventory/home.html')
+    total_items = InventoryItem.objects.count()
+    total_suppliers = Supplier.objects.count()
+    total_sales = Sale.objects.aggregate(total_amount=models.Sum('amount'))['total_amount'] or 0
+
+    return render(request, 'inventory/home.html', {
+        'total_items': total_items,
+        'total_suppliers': total_suppliers,
+        'total_sales': total_sales,
+    })
 
 def user_login(request):
     if request.method == 'POST':
@@ -66,3 +76,16 @@ def add_supplier(request):
         form = SupplierForm()
 
     return render(request, 'inventory/add_supplier.html', {'form': form})
+
+def manage_inventory(request):
+    items = InventoryItem.objects.all()
+
+    if request.method == 'POST':
+        form = InventoryItemForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_inventory')
+    else:
+        form = InventoryItemForm()
+
+    return render(request, 'inventory/manage_inventory.html', {'form': form, 'items': items})

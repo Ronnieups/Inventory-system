@@ -2,5 +2,19 @@
 
 {% block content %}
   <h2>Welcome to the Inventory System</h2>
+  <div class="overview-container">
+    <div class="overview-item">
+        <h3>Total Items in Inventory</h3>
+        <p>{{ total_items }}</p>
+    </div>
+    <div class="overview-item">
+        <h3>Total Suppliers</h3>
+        <p>{{ total_suppliers }}</p>
+    </div>
+    <div class="overview-item">
+        <h3>Total Sales Amount</h3>
+        <p>${{ total_sales }}</p>
+    </div>
+</div>
   <!-- Add any additional content as needed -->
 {% endblock %}

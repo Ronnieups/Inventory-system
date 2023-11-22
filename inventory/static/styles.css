@@ -1,11 +1,21 @@
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('img/inventory_background.webp');  /* Path to your background image */
+    background-size: cover;  /* Cover the entire screen */
+    background-position: center;  /* Center the background image */
+    background-repeat: no-repeat;  /* Do not repeat the background image */
+    color: #333;
   }
   
   .container {
     max-width: 800px;
     margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .login-container {
@@ -25,12 +35,12 @@ body {
   }
   
   nav {
-    background-color: #444;
+    background-color: #d01d1d;
     padding: 10px;
   }
   
   nav a {
-    color: #fff;
+    color: #ff1313;
     text-decoration: none;
     margin-right: 15px;
   }
@@ -88,4 +98,11 @@ input {
     padding: 10px;
     border-radius: 5px;
     width: 200px;
+}
+li {
+  margin-bottom: 15px;
+}
+li:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
 }

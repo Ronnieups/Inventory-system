@@ -7,8 +7,6 @@ class Category(models.Model):
 class Supplier(models.Model):
     name = models.CharField(max_length=255)
 
-    
-
 class InventoryItem(models.Model):
     name = models.CharField(max_length=255)
     quantity = models.PositiveIntegerField()

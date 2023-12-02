@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Retrieve Data{% endblock %}
+
+{% block content %}
+   <div class="container">
+       <h2>Retrieved Inventory Data</h2>
+
+       <table class="table">
+           <thead>
+               <tr>
+                   <th>ID</th>
+                   <th>Name</th>
+                   <th>Quantity</th>
+                   <!-- Add more columns as needed -->
+               </tr>
+           </thead>
+           <tbody>
+               {% for item in items %}
+                   <tr>
+                       <td>{{ item.id }}</td>
+                       <td>{{ item.name }}</td>
+                       <td>{{ item.quantity }}</td>
+                       <!-- Add more columns as needed -->
+                   </tr>
+               {% endfor %}
+           </tbody>
+       </table>
+   </div>
+{% endblock %}
